@@ -1,0 +1,63 @@
+mixin content(content, tools)
+  tr
+    th( scope ='row' colspan = '3')= content.content
+    td(colspan = '2')= tools.tomydate(content.rd)
+  tr
+    td(colspan = '5')= content.info
+
+mixin titled(titled, tools)
+  table#title.table.table-hover.table-dark
+    thead
+      tr
+        th( scope ='col') title
+        th( scope ='col') stage
+        th( scope ='col') keys
+        th( scope ='col') type
+        th( scope ='col') rd
+      tr
+        th( scope ='col')= titled.title
+        th( scope ='col')= titled.stage
+        th( scope ='col')= titled.keys.join()
+        th( scope ='col')= titled.type
+        th( scope ='col')= tools.tomydate(titled.rd)
+    tbody
+      each content in titled.contents
+        +content(content, tools)
+      else
+        caption There are no values
+
+mixin named(named, tools)
+  .alert.alert-warning.mt-2(role="alert")
+    span( style = `color : red`)= named.name
+    span.float-right( style = `color : blue`)= tools.tomydate(named.rd)
+    each titled in named.titles
+      +titled(titled, tools)
+    else
+      caption There are no values
+      
+each named in nameds
+  +named(named, tools)
+else
+  caption There are no values
+
+
+
+script.
+  $('table#item_event_table').on('click.detail', function(e){
+      // console.log('e.target.nodeName : ' + e.target.nodeName);
+      
+      var value = {
+        id : undefined,
+        op : 'detail',
+        doc : 'item'
+      };
+      var target = $(e.target);
+      if(!target.hasClass('detail'))
+        return;
+      
+      value.id = target.attr('detail');
+      
+      msg('test', value);
+      //$('table#item_event_table').off('click.detail');
+    });
+  

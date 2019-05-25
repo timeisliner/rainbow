@@ -1,0 +1,41 @@
+mixin row(item)
+  tr( style = `color : red`)
+    th( scope ='row')= item.index.id
+    td= item.title.mh
+    td= item.title.sh
+    td
+      a.detail.btn.border-white( detail = `${item.index.id}` ) 详情
+
+table#item_event_table.table.table-hover.table-dark
+  thead
+    tr
+      th( scope ='col') id
+      th( scope ='col') mh
+      th( scope ='col') sh
+      th( scope ='col') operate
+  tbody
+    each item in items
+      +row(item)
+    else
+      caption There are no values
+
+
+script.
+  $('table#item_event_table').on('click.detail', function(e){
+      // console.log('e.target.nodeName : ' + e.target.nodeName);
+      
+      var value = {
+        id : undefined,
+        op : 'detail',
+        doc : 'item'
+      };
+      var target = $(e.target);
+      if(!target.hasClass('detail'))
+        return;
+      
+      value.id = target.attr('detail');
+      
+      msg('test', value);
+      //$('table#item_event_table').off('click.detail');
+    });
+  

@@ -1,0 +1,37 @@
+mixin row(i, id, title)
+  tr
+    th( scope ='row')= i
+    td
+      a.objListEvent.btn.pt-0.pb-0( value = id)= title
+
+table#objList.table.table-hover.table-dark
+  thead
+    tr
+      th( scope ='col') #
+      th( scope ='col') title
+  tbody
+    - var i = 0;
+    each rc in rcs
+      - i ++;
+      +row(i, rc._id, rc.title)
+    else
+      caption There are no values
+
+script.
+  $('table#objList').on('click.detail', function(e){
+      console.log('e.target.nodeName : ' + e.target.nodeName);
+      
+      var value = {
+        id : undefined,
+        op : 'detail',
+        doc : 'swm'
+      };
+      var target = $(e.target);
+      if(!target.hasClass('objListEvent'))
+        return;
+      
+      value.id = target.attr('value');
+      
+      msg('test', value);
+      //$('table#objList').off('click.detail');
+    });

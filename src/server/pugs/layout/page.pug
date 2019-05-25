@@ -1,0 +1,27 @@
+doctype html
+html(lang='en')
+  head
+    block meta_req
+      include ./req/meta.pug
+    block meta
+    
+    block link_req
+      include ./req/link.pug
+    block link
+
+    block title
+      title= title
+  body
+    .container
+      block navbar
+        include ./ui/navbar.pug
+  
+      block content
+      
+      
+      block foot
+      
+      block script_req
+        include ./req/script.pug
+      block script
+      

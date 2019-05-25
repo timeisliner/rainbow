@@ -1,0 +1,50 @@
+//- obj 列表行 待定
+mixin row(obj)
+  tr
+    th( scope ='row')= obj.m
+    td= obj.r.n
+    td= obj.r.e
+    td= obj.ref
+    td= obj.f
+    td= obj.d
+
+//- obj 列表 待定
+mixin list(objs, visible)
+  - var t = { class : visible ? 'visible' : 'd-none'};
+  table.table.table-hover.table-dark&attributes(t)
+    thead
+      tr
+        th( scope ='col') #
+        th( scope ='col') name
+        th( scope ='col') explain
+        th( scope ='col') ref
+        th( scope ='col') f
+        th( scope ='col') d
+    tbody
+      each obj in objs
+        +row(obj)
+      else
+        caption nothing
+
+//- obj 单项 待定
+mixin part(name)
+  .input-group.mb-2
+    .input-group-prepend
+      .input-group-text(style='width:80px')= name
+    input.form-control(id = `obj_${name}`, type = 'text' placeholder = name)
+
+//- 添加 obj 待定
+mixin add()
+  .card(style="max-width: 18rem;")
+    .card-header.d-inline-flex
+      span a
+      button.px-2.btn.btn-sm.btn-outline-danger(type="button") &times;
+    .card-body
+      +part('name')
+      +part('explain')
+      +part('ref')
+      +part('first')
+
++list(objs, 1)
+
++add()

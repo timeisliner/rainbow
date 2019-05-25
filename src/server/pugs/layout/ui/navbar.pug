@@ -1,0 +1,42 @@
+//- !-- Image and text --
+nav.navbar.navbar-toggleable-md.navbar-light(style="background-color: #e3f2fd;")
+  a.navbar-brand(href='/')
+    img.d-inline-block.align-top(src="./img/logo.png" width="30" height="30" alt="Big Pirates")
+    |&nbsp;Big Pirates
+  //-  a.navbar-brand(href='#') Navbar
+  button.navbar-toggler.navbar-toggler-right(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+    span.navbar-toggler-icon
+  
+  #navbarSupportedContent.collapse.navbar-collapse.mt-2
+    .navbar.navbar-dark.bg-dark.navbar-expand.justify-content-between
+      form.was-validated
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            .custom-control.custom-radio.mr-2
+              input.custom-control-input(type="radio" id="cmd_rank" name="radio-stacked" required checked)
+              label.custom-control-label(for="cmd_rank") rank
+              .invalid-feedback rank
+          li.nav-item
+            .custom-control.custom-radio.mr-2
+              input.custom-control-input(type="radio" id="cmd_delete" name="radio-stacked" required)
+              label.custom-control-label(for="cmd_delete") delete
+              .invalid-feedback delete
+          li.nav-item
+            .custom-control.custom-radio.mr-2
+              input.custom-control-input(type="radio" id="cmd_obj" name="radio-stacked" required)
+              label.custom-control-label(for="cmd_obj") obj
+              .invalid-feedback obj
+          li.nav-item
+            .custom-control.custom-radio
+              input.custom-control-input(type="radio" id="cmd_test" name="radio-stacked" required)
+              label.custom-control-label(for="cmd_test") testValidation
+              .invalid-feedback Example invalid feedback text
+    
+      .btn-toolbar(role="toolbar")
+        .input-group
+          .input-group-prepend
+            #face.input-group-text(style='width:60px') ^_^
+          input#search_t.form-control(type='text' placeholder='Search')
+        .btn-group.ml-2(role="group")
+          button#search_b.btn.btn-outline-success.rounded(type='button') Search
+

@@ -1,0 +1,33 @@
+mixin row(r, c)
+  tr( style = `color : #${c.v}`)
+    th( scope ='row')= r.m
+    td= r.r.n
+    td= r.r.e
+    td= c.v
+    td
+      a.delete.btn.border-white( dtid = `${r.m}` ) 删除
+
+table.table.table-hover.table-dark
+  thead
+    tr
+      th( scope ='col') #
+      th( scope ='col') name
+      th( scope ='col') explain
+      th( scope ='col') hex
+      th( scope ='col') operate
+  tbody
+    each rc in rcs
+      +row(rc.r, rc.c)
+    else
+      caption There are no values
+
+
+script.
+  $('a.delete').each(function( index ) {
+    $( this ).on('click.delete', function(){
+      console.log(index);
+      $(this).parent('td').parent('tr').remove();
+      msg('delete', $(this).attr('dtid'));
+      $(this).off('click.delete');
+    });
+  });
