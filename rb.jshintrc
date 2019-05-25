@@ -1,0 +1,19 @@
+{
+  "curly": true,
+  "eqeqeq": true,
+  "nocomma": true,
+  "undef": true,
+  "unused": true,
+  "esversion" : 6,
+  
+  "globals": {
+    "module": true,
+    "require": true,
+    "exports": true,
+    "console": true,
+    "global": true,
+    "log": true,
+    "op": true,
+    "__dirname": true
+  }
+}
